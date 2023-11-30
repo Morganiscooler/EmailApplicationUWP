@@ -1,0 +1,34 @@
+﻿<Page
+    x:Class="EmailApplicationUWPVersion.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:EmailApplicationUWPVersion"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <muxc:TabView HorizontalAlignment="Center" Height="571" Width="1278" VerticalAlignment="Center" Background="#FFC7C7C7" >
+
+            <muxc:TabViewItem Header="Inbox" IsClosable="False" Background="Gainsboro">
+                <muxc:TabViewItem.IconSource>
+                    <muxc:SymbolIconSource Symbol="Home" />
+                </muxc:TabViewItem.IconSource>
+            </muxc:TabViewItem>
+            <muxc:TabViewItem Header="Important" IsClosable="False" Background="Gainsboro">
+                <muxc:TabViewItem.IconSource>
+                    <muxc:SymbolIconSource Symbol="Mail" />
+                </muxc:TabViewItem.IconSource>
+            </muxc:TabViewItem>
+            <muxc:TabViewItem Header="Trash" IsClosable="False" Background="Gainsboro">
+                <muxc:TabViewItem.IconSource>
+                    <muxc:SymbolIconSource Symbol="Delete" />
+                </muxc:TabViewItem.IconSource>
+            </muxc:TabViewItem>
+
+
+        </muxc:TabView>
+    </Grid>
+</Page>
