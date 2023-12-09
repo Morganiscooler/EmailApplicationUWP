@@ -1,0 +1,55 @@
+
+
+
+
+
+
+
+
+SCOPE
+The idea is to make a web browser on the right side that shows the actual gmail app.
+On the left it is goign to show the result of the information list we scalp from the gmail web browser,
+such as
+inbox, spam, trash, favorite
+
+inside each tab will bring the information up from the web browser
+
+we also want a search bar to search and filter our items in our tab window.
+
+
+
+
+
+TODO 
+Get rid of + 
+Figure out window resizing, 75% - CANT DISABLE THE RESIZING IN A UWP APP
+Figure out the icons you want
+Add the webview to the right
+Add another container into the tabs, so that will populate the email list stuff
+Search bar that will do that
+the logic that will sync between gmail and the list population, and changing the gmail.
+
+LIST CONTAINER:
+on each of the list items - three dots ... - gives you more options 
+to left of 3 dots will be the pins, then to the left trash can, then to the left of that it will be favorites
+This will be multiline, the preview will be below the subject line.
+scroll bar on right side
+
+
+
+
+Version 2
+Pin button
+clicked -> remove all other mail besides the pinned mail from the view list.
+This will make a label in the gmail, and then store that in the pinned label.
+that's where our backend was coming from.
+
+
+
+
+
+
+
+
+
+
