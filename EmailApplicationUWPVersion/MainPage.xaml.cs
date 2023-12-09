@@ -26,6 +26,7 @@ namespace EmailApplicationUWPVersion
         public MainPage()
         {
             this.InitializeComponent();
+           
         }
     }
 }
