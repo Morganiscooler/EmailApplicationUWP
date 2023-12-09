@@ -1,0 +1,19 @@
+TO DO LIST:
+
+1. Get rid of the plus icon for the tabcontrol
+
+2. Add webBrowser control - leads to Gmail
+   (Using OAuth)
+
+3. Add an inbox/important/spam/trash control that syncs with newly popped up mail
+
+4. Add an important/trash/spam icon that MOVES the mail to the other tab controls
+
+5. Add a search menu to look up SPECIFIC mail
+
+VERSION 2:
+Implements label - Pinned into the inbox 
+-> as user proceeds to click on the "pin" icon, it brings the item into the pinned LABEL (within Gmail)
+
+
+
