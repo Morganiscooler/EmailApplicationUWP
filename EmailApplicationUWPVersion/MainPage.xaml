@@ -7,10 +7,10 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
     mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1920" Height="1080">
 
     <Grid>
-        <muxc:TabView HorizontalAlignment="Center" Height="571" Width="1278" VerticalAlignment="Center" Background="#FFC7C7C7" >
+        <muxc:TabView HorizontalAlignment="Center" Height="1060" Width="1900" Background="#FFC7C7C7" VerticalAlignment="Center" >
 
             <muxc:TabViewItem Header="Inbox" IsClosable="False" Background="Gainsboro">
                 <muxc:TabViewItem.IconSource>
