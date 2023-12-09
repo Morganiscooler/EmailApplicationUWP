@@ -30,7 +30,6 @@ namespace EmailApplicationUWPVersion
         {
             this.InitializeComponent();
 
-
             // This will automatically adjust the window size to 75% of the screen it loads on.
             // You can't disable resizing.
             DisplayInformation displayInformation = DisplayInformation.GetForCurrentView();
@@ -38,6 +37,7 @@ namespace EmailApplicationUWPVersion
             //Debug.WriteLine(displayInformation.ScreenHeightInRawPixels);
             ApplicationView.PreferredLaunchViewSize = new Size(displayInformation.ScreenWidthInRawPixels * 0.75, displayInformation.ScreenHeightInRawPixels * 0.75);
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
+
 
         }
     }
