@@ -11,9 +11,15 @@ TO DO LIST:
 
 5. Add a search menu to look up SPECIFIC mail
 
+!!IMPORTANT: Make sure screen size automatically adjusts to the screen (NEEDS TO BE FIXED)!!
 VERSION 2:
 Implements label - Pinned into the inbox 
 -> as user proceeds to click on the "pin" icon, it brings the item into the pinned LABEL (within Gmail)
 
 
 
+Controls I need CURRENTLY:
+Webview container (gmail application + sign in)  --> (webview)
+Container for LIST (inbox) --> (listview, gridview)
+container for text box (search bar) --> (text box)
+text box for "search" (in the search bar) --> (label)
