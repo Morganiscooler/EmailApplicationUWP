@@ -39,6 +39,8 @@ namespace EmailApplicationUWPVersion
             ApplicationView.PreferredLaunchWindowingMode = ApplicationViewWindowingMode.PreferredLaunchViewSize;
 
 
+
+
         }
     }
 }

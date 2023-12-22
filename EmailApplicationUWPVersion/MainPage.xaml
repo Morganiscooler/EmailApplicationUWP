@@ -7,12 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 
-    mc:Ignorable="d"
-    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}" Width="1920" Height="1080">
+    mc:Ignorable="d" Width="1399" Height="700">
 
-    <Grid>
-        <muxc:TabView HorizontalAlignment="Center" Height="1060" Width="1900" Background="#FFC7C7C7" VerticalAlignment="Center" >
-        <muxc:TabView x:Name="TabView" HorizontalAlignment="Center" Height="700" Width="1399" VerticalAlignment="Center" Background="#0f3464" >
+    <Grid >
+
+        <muxc:TabView x:Name="TabView" HorizontalAlignment="Center" Height="700" Width="1399" Background="#0f3464" VerticalAlignment="Center" >
             <muxc:TabView.Resources>
                 <ResourceDictionary>
                     <SolidColorBrush x:Key="TabViewItemHeaderBackground" Color="#249ee4"/>
@@ -42,6 +41,7 @@
 
 
         </muxc:TabView>
-        <Rectangle x:Name="ignoreThis" RenderTransformOrigin="42.604,0.583" Margin="975,10,377,662" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Fill="#FF0F3464"/>
+        <Rectangle x:Name="ignoreThis" RenderTransformOrigin="42.604,0.583" Margin="975,10,389,667" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Fill="#FF0F3464" Canvas.ZIndex="100"/>
+        <WebView/>
     </Grid>
 </Page>
