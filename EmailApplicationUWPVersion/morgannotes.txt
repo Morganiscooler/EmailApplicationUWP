@@ -18,7 +18,7 @@ Implements label - Pinned into the inbox
 
 
 
-Controls I need CURRENTLY:
+**Controls I need CURRENTLY:
 Webview container (gmail application + sign in)  --> (webview)
 Container for LIST (inbox) --> (listview, gridview)
 container for text box (search bar) --> (text box)
