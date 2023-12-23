@@ -7,11 +7,11 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:muxc="using:Microsoft.UI.Xaml.Controls"
 
-    mc:Ignorable="d" Width="1399" Height="700"
+    mc:Ignorable="d"
     >
 
     <Grid>
-        <muxc:TabView x:Name="TabView" HorizontalAlignment="Center" Height="700" Width="1399" VerticalAlignment="Center" Background="#0f3464" >
+        <muxc:TabView x:Name="TabView" Background="#0f3464" VerticalAlignment="Stretch" >
             <muxc:TabView.Resources>
                 <ResourceDictionary>
                     <SolidColorBrush x:Key="TabViewItemHeaderBackground" Color="#249ee4"/>
@@ -41,10 +41,12 @@
 
 
         </muxc:TabView>
-        <Rectangle x:Name="ignoreThis" RenderTransformOrigin="42.604,0.583" Margin="968,-12,353,681" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Fill="#FF0F3464" UseLayoutRounding="False" d:LayoutRounding="Auto" Canvas.ZIndex="100">
+        <Rectangle x:Name="HideXRectangle" FocusVisualPrimaryBrush="{x:Null}" FocusVisualSecondaryBrush="{x:Null}" Fill="#FF0F3464" Width="30" Height="30" Margin="975,0,500,950">
             <Rectangle.RenderTransform>
-                <CompositeTransform Rotation="-0.295"/>
+                <CompositeTransform/>
             </Rectangle.RenderTransform>
         </Rectangle>
+
+
     </Grid>
 </Page>
