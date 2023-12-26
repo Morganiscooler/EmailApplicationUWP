@@ -23,3 +23,6 @@ Webview container (gmail application + sign in)  --> (webview)
 Container for LIST (inbox) --> (listview, gridview)
 container for text box (search bar) --> (text box)
 text box for "search" (in the search bar) --> (label)
+
+questions to ask:
+1. how to grab all the raw content on webview

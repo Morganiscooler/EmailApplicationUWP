@@ -5,11 +5,16 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Text.RegularExpressions;
 using System.Threading;
+using System.Threading.Tasks;
+using System.Xml.Linq;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.Graphics.Display;
+using Windows.Storage;
 using Windows.UI.ViewManagement;
+using Windows.UI.WebUI;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -52,14 +57,53 @@ namespace EmailApplicationUWPVersion
             t.Change(dueTime, 0);
 
         }
-        private void TimerProc(object state) // arg: takes 1 argument for object (class)
+        private async void TimerProc(object state) // TimerProc happens after the 5 seconds
         {
             // The state object is the Timer object.
             Timer t = (Timer)state;
             t.Dispose();
             Debug.WriteLine("The timer callback executes properly.");
+
+            // execute the webview code within here
+
+            //ReadXml(); The FUNCTION we're calling back to
+            string resulthtml;
+            resulthtml = await Gmail.InvokeScriptAsync("eval", new string[] { "document.documentElement.outerHTML;" }); // handle exception error
+            Debug.WriteLine(resulthtml);
         }
 
+        // Grabbing information from webview (Gmail) control
+        private async Task ReadXml(StorageFile file)
+        {
+            string htmlContent = await FileIO.ReadTextAsync(file);
+            Debug.WriteLine("This is " + htmlContent);
+
+
+            XDocument doc = XDocument.Parse(htmlContent);
+            var EmailList = doc.Root.Descendants(XName.Get("firstname"));
+            if (EmailList.Count() > 0)
+            {
+                string Emails = EmailList.First().Value;
+                Emails = Regex.Replace(Emails, @"<[^>]*>", "");
+                // do other things...
+
+            }
+        }
+
+
+
+        private async void Button_Click(object sender, RoutedEventArgs e) // another potential route = using a button to load in Emails
+        {
+            try
+            {
+                string[] arguments = new string[] { @"window.getSelection().toString();" };
+                var s = await Gmail.InvokeScriptAsync("eval", arguments);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine(ex.Message);
+            }
+        }
 
         //define WebBrowserLoadGmail's function
         private void WebBrowserLoadGmail() // Loading web browser (function)
@@ -71,18 +115,22 @@ namespace EmailApplicationUWPVersion
 
 
         //Gmail.ContentLoading += Gmail_ContentLoading;
-        private void Gmail_ContentLoading(WebView sender, WebViewContentLoadingEventArgs args)
+        private void Gmail_ContentLoading(WebView sender, WebViewContentLoadingEventArgs args) // function binded to a event
         {      
             // Show status.
             if (args.Uri != null)
-            {
-                string output = "Loading content for " + args.Uri.ToString();                    
-                Debug.WriteLine(output);
-                StartTimer(1 * 1000); //argument goes in parenthesis
+            {   
+                {
+                    string output = "Loading content for " + args.Uri.ToString();
+                    Debug.WriteLine(output);
+                    StartTimer(5 * 1000); //argument goes in parenthesis
+        
+                }
+               
             }
         }
-         
-      
+
+
     }
   }
 
