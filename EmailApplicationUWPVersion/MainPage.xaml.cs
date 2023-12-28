@@ -24,6 +24,7 @@ using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 using MUXC = Microsoft.UI.Xaml.Controls;
 
+
 // The Blank Page item template is documented at https://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409
 
 namespace EmailApplicationUWPVersion
@@ -33,7 +34,10 @@ namespace EmailApplicationUWPVersion
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private Timer timer;
+        //private Timer timer;
+
+        private DispatcherTimer timer2;
+
         public MainPage()
         {
             this.InitializeComponent();
@@ -53,38 +57,48 @@ namespace EmailApplicationUWPVersion
         // I'm confused about these two functions 
         private void StartTimer(int dueTime) // arg: takes in a number (dueTime)
         {
-            Timer t = new Timer(new TimerCallback(TimerProc));
-            t.Change(dueTime, 0);
+            //Timer t = new Timer(new TimerCallback(TimerProc));
+            //t.Change(dueTime, 0);
 
         }
         private async void TimerProc(object state) // TimerProc happens after the 5 seconds
         {
             // The state object is the Timer object.
-            Timer t = (Timer)state;
-            t.Dispose();
-            Debug.WriteLine("The timer callback executes properly.");
+            //Timer t = (Timer)state;
+            //t.Dispose();
+            //Debug.WriteLine("The timer callback executes properly.");
 
             // execute the webview code within here
 
             //ReadXml(); The FUNCTION we're calling back to
-            string resulthtml;
-            resulthtml = await Gmail.InvokeScriptAsync("eval", new string[] { "document.documentElement.outerHTML;" }); // handle exception error
-            Debug.WriteLine(resulthtml);
+            //string resulthtml = null;
+            //try 
+            //{
+            //    resulthtml = await Gmail.InvokeScriptAsync("eval", new string[] { "document" }); // handle exception error
+            //    Debug.WriteLine(resulthtml);
+            //} 
+            //catch(Exception ex)
+            //{
+            //    // failed output
+            //}
+
+            //ReadXml(); // We need arguments in this function to make it WORK
+
         }
 
         // Grabbing information from webview (Gmail) control
-        private async Task ReadXml(StorageFile file)
+        private async Task ReadXml(StorageFile file) 
         {
             string htmlContent = await FileIO.ReadTextAsync(file);
             Debug.WriteLine("This is " + htmlContent);
 
 
             XDocument doc = XDocument.Parse(htmlContent);
-            var EmailList = doc.Root.Descendants(XName.Get("firstname"));
+            var EmailList = doc.Root.Descendants(XName.Get("emails"));
             if (EmailList.Count() > 0)
             {
                 string Emails = EmailList.First().Value;
-                Emails = Regex.Replace(Emails, @"<[^>]*>", "");
+                Emails = Regex.Replace(Emails, @"<[^>]*>", ""); // javascript injection
                 // do other things...
 
             }
@@ -120,17 +134,32 @@ namespace EmailApplicationUWPVersion
             // Show status.
             if (args.Uri != null)
             {   
-                {
+                { 
                     string output = "Loading content for " + args.Uri.ToString();
                     Debug.WriteLine(output);
-                    StartTimer(5 * 1000); //argument goes in parenthesis
-        
+                    //StartTimer(10 * 1000); //argument goes in parenthesis
+
+                    DispatcherTimer dispatcherTimer = new DispatcherTimer();
+                    dispatcherTimer.Tick += dispatcherTimer_Tick;
+                    dispatcherTimer.Interval = new TimeSpan(0, 0, 5); // every 5 seconds, a tick occurs, and the function is called
+                    dispatcherTimer.Start();
                 }
                
             }
         }
+        private async void dispatcherTimer_Tick(object sender, object e)
+        {
+            Debug.WriteLine("Dispatch Timer Done");
+            string resulthtml = await Gmail.InvokeScriptAsync("eval", new string[] { "document.documentElement.outerHTML;" }); // handle exception error
+            Debug.WriteLine("resulthtml: " + resulthtml);
+            (sender as DispatcherTimer).Stop();
+        }
 
-
+        private void Gmail_NavigationStarting(WebView sender, WebViewNavigationStartingEventArgs args)
+        {
+            //var callback = new MainPage();
+            //Gmail.AddWebAllowedObject("MainPage", callback);
+        }
     }
   }
 

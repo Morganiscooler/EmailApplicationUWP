@@ -48,7 +48,7 @@
             </Rectangle.RenderTransform>
         </Rectangle>
         <!--Gmail-->     
-        <WebView x:Name="Gmail" HorizontalAlignment="Left" Height="613" Margin="489,67,0,0" VerticalAlignment="Top" Width="900" ContentLoading="Gmail_ContentLoading"/>
+        <WebView x:Name="Gmail" HorizontalAlignment="Left" Height="613" Margin="489,67,0,0" VerticalAlignment="Top" Width="900" ContentLoading="Gmail_ContentLoading" NavigationStarting="Gmail_NavigationStarting"/>
         <ListView Margin="35,100,945,20"/>
     </Grid>
 </Page>
